@@ -50,7 +50,6 @@ public class Startup {
         System.out.println(register.closeSale());
         
         
-        System.out.println("\n\nStartup class is now ending.");
         
         
         
