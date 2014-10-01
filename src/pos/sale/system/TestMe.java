@@ -33,6 +33,10 @@ public class TestMe {
         System.out.println(rc.getReceiptTotalSection());
         
         
+        //int y;
+        //System.out.println("\n unintialized y = " + y);
+        
+        
         
         
         /*

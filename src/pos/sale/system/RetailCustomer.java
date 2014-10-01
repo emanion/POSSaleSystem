@@ -6,30 +6,54 @@ package pos.sale.system;
  * and open the template in the editor.
  */
 /**
+ * This class represents a simulation of a Retail Customer in a retail sales
+ * Organization.
+ *
  *
  * @author emanion
+ * @version 09/30/2014
+ *
  */
 public class RetailCustomer implements CustomerStrategy {
 
     private int id;
     private String name;
     private Address address;
+    private int minCustomerId = 1;
 
     @Override
     public int getId() {
         return id;
     }
 
+    /**
+     * Constructor for new RetailCustomer object.
+     *
+     * @param id
+     * @param name
+     * @param address
+     * @throws IllegalArgumentException
+     */
     public RetailCustomer(int id, String name, Address address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
+
+        setId(id);
+        setName(name);
+        setAddress(address);
     }
 
     public RetailCustomer() {
     }
 
+    /**
+     * Set customerId
+     *
+     * @param id
+     * @throws IllegalArgumentException
+     */
     public void setId(int id) {
+        if (id < minCustomerId) {
+            throw new IllegalArgumentException();
+        }
         this.id = id;
     }
 
@@ -37,8 +61,35 @@ public class RetailCustomer implements CustomerStrategy {
         return name;
     }
 
+    /**
+     * set Customer Name
+     *
+     * @param name
+     * @throws IllegalArgumentException
+     */
     public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    /**
+     * sets address object for this customer
+     *
+     * @param address
+     * @throws IllegalArgumentException
+     *
+     */
+    public void setAddress(Address address) {
+        if (address == null) {
+            throw new IllegalArgumentException();
+        }
+        this.address = address;
     }
 
     @Override
