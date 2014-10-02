@@ -11,11 +11,12 @@ package pos.sale.system;
  */
 public class FlatPctDiscount implements DiscountStrategy {
     
+    private double discountPercent = .10;
     
     @Override
     public double getDiscountAmount(double price, int quantity) {
 
-        double discount = price * .10;
+        double discount = price * discountPercent;
         
         return discount;
 

@@ -11,18 +11,23 @@ package pos.sale.system;
  */
 public class QuantityDiscount implements DiscountStrategy {
     
+    private double highDiscountRate = .20;
+    private double midDiscountRate = .10;
+    private double lowDiscountRate = .05;
+    private double noDiscountRate = 0;
+    
     public double getDiscountAmount(double price, int quantity) {
 
         double discount;
 
         if (quantity > 20) {
-            discount = price * .20;
+            discount = price * highDiscountRate;
         } else if (quantity > 10) {
-            discount = price * .10;
+            discount = price * midDiscountRate;
         } else if (quantity > 1){
-            discount = price * .05;
+            discount = price * lowDiscountRate;
         } else {
-            discount = 0;
+            discount = noDiscountRate;
         }
 
         return discount;

@@ -11,6 +11,6 @@ package pos.sale.system;
  */
 public interface DiscountStrategy {
 
-    double getDiscountAmount(double price, int quantity);
+    public abstract double getDiscountAmount(double price, int quantity);
 
 }

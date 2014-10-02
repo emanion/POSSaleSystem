@@ -16,21 +16,25 @@ public class TestMe {
         
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         
+        DbStrategy dbStrategy = new FakeDB();
         
         
-        
+        /*
         DiscountStrategy ds = new QuantityDiscount();
-        Product pd = new Product(1234,"misc",12.90,ds);
+        Product pd = new Product(3762,"misc",12.90,ds);
         LineItem lineItem = new LineItem(20,pd);
         Receipt rc = new Receipt();
-        rc.addLineItem(lineItem);
-        
+        rc.addLineItem(dbStrategy, 1234, 20);
+        */
         
         double x = 0;
         System.out.println(" here it is.." + nf.format(x));
+        
+        /*
         System.out.println(pd.getDiscountAmount(20));
         System.out.println(lineItem.getFormatedDetailLine());
         System.out.println(rc.getReceiptTotalSection());
+        */
         
         
         //int y;

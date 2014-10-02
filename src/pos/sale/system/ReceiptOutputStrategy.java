@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package pos.sale.system;
 
 /**
  *
  * @author emanion
  */
-public interface DbStrategy {
+public interface ReceiptOutputStrategy {
 
-    public abstract CustomerStrategy getCustomerById(int CustomerId);
-
-    public abstract Product getProductById(int ProductId);
-
+    void outputFormattedReceipt(String formattedReceipt);
+    
 }

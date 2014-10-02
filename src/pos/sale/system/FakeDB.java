@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pos.sale.system;
 
 /**
@@ -14,7 +10,9 @@ public class FakeDB implements DbStrategy {
     CustomerStrategy[] customers;
     Product[] products;
 
-    public void setCustomerDb() {
+    public FakeDB() {
+
+        // instantiate and initialize the customer DB 
         customers = new RetailCustomer[3];
 
         Address addressOne = new Address("103 Elm Street", "unit 4",
@@ -33,21 +31,7 @@ public class FakeDB implements DbStrategy {
         RetailCustomer customerThree = new RetailCustomer(333, "Jimmy the Greek", addressThree);
         customers[2] = customerThree;
 
-    }
-
-    public CustomerStrategy getCustomerById(int CustomerId) {
-        CustomerStrategy customer = new RetailCustomer();
-
-        for (int x = 0; x < customers.length; x++) {
-            if (CustomerId == customers[x].getId()) {
-                customer = customers[x];
-            }
-        }
-
-        return customer;
-    }
-
-    public void setProductDb() {
+        // instantiate and initialize the product DB 
         products = new Product[5];
 
         DiscountStrategy qtyDiscountOne = new FlatPctDiscount();
@@ -71,7 +55,17 @@ public class FakeDB implements DbStrategy {
         products[4] = productFive;
 
     }
+    public CustomerStrategy getCustomerById(int CustomerId) {
+        CustomerStrategy customer = new RetailCustomer();
 
+        for (int x = 0; x < customers.length; x++) {
+            if (CustomerId == customers[x].getId()) {
+                customer = customers[x];
+            }
+        }
+
+        return customer;
+    }
     public Product getProductById(int ProductId) {
         Product product = new Product();
 

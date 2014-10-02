@@ -10,12 +10,11 @@ package pos.sale.system;
  * @author emanion
  */
 public class Startup {
-    
+
     public static void main(String[] args) {
-        
+
         Register register = new Register();
-        
-        
+
         // FIRST SALE.....
         // FIRST SALE.....
         // FIRST SALE.....
@@ -27,11 +26,9 @@ public class Startup {
         // white shirt
         register.addLineItem(3762, 2);
         //close out sale
-        System.out.println(register.closeSale());
-        
-        
-        
-        
+        ReceiptOutputStrategy receiptOutputStrategy = new ReceiptOutputConsole();
+        receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
+
         // SECOND SALE.....
         // SECOND SALE.....
         // SECOND SALE.....
@@ -47,14 +44,8 @@ public class Startup {
         // badger shirt
         register.addLineItem(9313, 1);
         //close out sale
-        System.out.println(register.closeSale());
-        
-        
-        
-        
-        
-        
-        
+        receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
+
         // THIRD SALE.....
         // THIRD SALE.....
         // THIRD SALE.....
@@ -76,13 +67,10 @@ public class Startup {
         // Dress socks 
         register.addLineItem(3578, 1);
         //close out sale
-        System.out.println(register.closeSale());
-        
-        
+        receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
+
         System.out.println("\n\nStartup class is now ending.");
-        
-        
-        
+
     }
-    
+
 }

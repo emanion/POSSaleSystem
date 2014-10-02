@@ -11,8 +11,8 @@ package pos.sale.system;
  */
 public interface CustomerStrategy {
 
-    public int getId();
+    public abstract int getId();
 
-    String getFormatedReceiptCustomerSection();
+    public abstract String getFormatedReceiptCustomerSection();
 
 }

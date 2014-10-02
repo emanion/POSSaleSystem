@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pos.sale.system;
 
 import java.text.NumberFormat;
@@ -20,8 +16,6 @@ public class LineItem {
 
     private int quantity;
     private Product product;
-    private double discount;
-    private double extendedPrice;
     private int minLineItemQuantity = 0;
 
     /**
@@ -85,8 +79,7 @@ public class LineItem {
      * @return - discount amount.
      */
     public double getDiscount() {
-        discount = product.getDiscountAmount(quantity);
-        return discount;
+        return product.getDiscountAmount(quantity);
     }
 
     /**
@@ -95,10 +88,8 @@ public class LineItem {
      * @return - line item extended price after discount.
      */
     public double getExtendedPrice() {
-        extendedPrice = (product.getUnitPrice() * quantity)
+        return (product.getUnitPrice() * quantity)
                 - product.getDiscountAmount(quantity);
-
-        return extendedPrice;
 
     }
 
@@ -121,9 +112,14 @@ public class LineItem {
 
     @Override
     public String toString() {
-        return "LineItem{" + "quantity=" + quantity
-                + ", product=" + product + ", discount=" + discount
-                + ", extendedPrice=" + extendedPrice + '}';
+        return "LineItem{" 
+                + "quantity=" + quantity
+                + ", product=" + product 
+                + ", discount=" 
+                + product.getDiscountAmount(quantity)
+                + ", extendedPrice=" 
+                + ((product.getUnitPrice() * quantity)- product.getDiscountAmount(quantity)) 
+                + '}';
     }
 
 }
