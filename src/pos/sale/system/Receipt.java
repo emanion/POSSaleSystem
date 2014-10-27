@@ -131,7 +131,8 @@ public class Receipt {
         this.receiptTotal = receiptTotal;
     }
 
-    public void addLineItem(DbStrategy dbStrategy, int productId, int quantity) {
+    public void addLineItem(DbStrategy dbStrategy, int productId, int quantity)
+        throws InvalidIdException {
 
         /* The following logic will create a new array that is 1 slot
          larger than the original

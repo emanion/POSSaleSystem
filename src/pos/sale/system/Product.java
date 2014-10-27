@@ -29,7 +29,7 @@ public class Product {
      */
     public Product(int id, String description, double unitPrice,
             DiscountStrategy discount) {
-        this.id = id;
+        setId(id);
         this.description = description;
         this.unitPrice = unitPrice;
         this.discount = discount;
@@ -55,11 +55,11 @@ public class Product {
      * @throws IllegalArgumentException.
      * @param id - the unique identifier for this product.
      */
-    public void setId(int id) {
-        if (id < minId) {
-            throw new IllegalArgumentException();
-        }
-
+    public void setId(int id) throws InvalidIdException {
+        if (id < minId)
+            throw new InvalidIdException();
+        if (id == 4487)
+            throw new InvalidIdException();
         this.id = id;
     }
 

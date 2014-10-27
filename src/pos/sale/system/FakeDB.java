@@ -47,9 +47,13 @@ public class FakeDB implements DbStrategy {
         products[2] = productThree;
 
         DiscountStrategy qtyDiscountFour = new QuantityDiscount();
-        Product productFour = new Product(4487, "T Shirt Pack    ", 39.58, qtyDiscountFour);
-        products[3] = productFour;
-
+        try {
+            Product productFour = new Product(4487, "T Shirt Pack    ", 39.58, qtyDiscountFour);
+            products[3] = productFour;
+        } catch (InvalidIdException iie){
+            System.out.println("Can't set up product: " + iie.getMessage());
+        }
+        
         DiscountStrategy qtyDiscountFive = new QuantityDiscount();
         Product productFive = new Product(9313, "Wisconsin Shirt ", 97.53, qtyDiscountFive);
         products[4] = productFive;

@@ -24,7 +24,7 @@ public class LineItem {
      * @param product
      * @throws IllegalArgumentException
      */
-    public LineItem(int quantity, Product product) {
+    public LineItem(int quantity, Product product) throws InvalidIdException {
         setQuantity(quantity);
         setProduct(product);
     }
@@ -66,7 +66,7 @@ public class LineItem {
      * @param product
      * @throws IllegalArgumentException
      */
-    public void setProduct(Product product) {
+    public void setProduct(Product product) throws InvalidIdException, IllegalArgumentException {
         if (product == null) {
             throw new IllegalArgumentException();
         }

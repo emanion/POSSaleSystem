@@ -28,7 +28,8 @@ public class Register {
 
     }
 
-    public void addLineItem(int productId, int quantity) {
+    public void addLineItem(int productId, int quantity) 
+        throws InvalidIdException {
         receipt.addLineItem(dbStrategy, productId, quantity);
     }
 

@@ -59,7 +59,11 @@ public class Startup {
         register.startNewSale(222);
         // add new items the customer is purchasing
         // T Shirt Pack
-        register.addLineItem(4487, 2);
+        try {
+            register.addLineItem(4487, 2);
+        } catch (InvalidIdException e){
+            System.out.println("!!error!!" +  e.getMessage());
+        }
         // add new items the customer is purchasing
         // Dress socks 
         register.addLineItem(2827, 7);
