@@ -29,6 +29,9 @@ public class Startup {
         ReceiptOutputStrategy receiptOutputStrategy = new ReceiptOutputConsole();
         receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
 
+        
+        
+        
         // SECOND SALE.....
         // SECOND SALE.....
         // SECOND SALE.....
@@ -61,8 +64,10 @@ public class Startup {
         // T Shirt Pack
         try {
             register.addLineItem(4487, 2);
-        } catch (InvalidIdException e){
-            System.out.println("!!error!!" +  e.getMessage());
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
         }
         // add new items the customer is purchasing
         // Dress socks 
@@ -75,6 +80,8 @@ public class Startup {
 
         System.out.println("\n\nStartup class is now ending.");
 
+          
+                
     }
 
 }

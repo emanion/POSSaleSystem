@@ -132,30 +132,46 @@ public class Receipt {
     }
 
     public void addLineItem(DbStrategy dbStrategy, int productId, int quantity)
-        throws InvalidIdException {
+        throws InvalidIdException, CantAddLineException {
 
-        /* The following logic will create a new array that is 1 slot
-         larger than the original
-         */
-        //increase array size by 1, and add a new lineItem.
-        //create new temp array of 1 position bigger than old
-        LineItem[] lineItemsTemp = new LineItem[lineItems.length + 1];
+        try {
+            
+            // first, try finding the ID given.  This will look it up on the 
+            // product DB.
+               
+        
+            Product tempProduct = dbStrategy.getProductById(productId); 
+        
+        
+        
+            
+            /* The following logic will create a new array that is 1 slot
+             larger than the original
+             */
+            //increase array size by 1, and add a new lineItem.
+            //create new temp array of 1 position bigger than old
+            LineItem[] lineItemsTemp = new LineItem[lineItems.length + 1];
 
-        // copy contents of original array
-        int x;
-        for (x = 0; x < lineItems.length; x++) {
-            lineItemsTemp[x] = lineItems[x];
+            // copy contents of original array
+            int x;
+            for (x = 0; x < lineItems.length; x++) {
+                lineItemsTemp[x] = lineItems[x];
+            }
+
+            /* The following logic will load the NEW SLOT with a new lineitem 
+             object
+             */
+            //add new line item,  but remember reference is from 0.
+            //  (i.e. the first position = 0 as reference, and so on.
+            lineItemsTemp[x] = new LineItem(quantity, dbStrategy.getProductById(productId));
+
+            // set original array = new temp
+            lineItems = lineItemsTemp;
+            
+            
+        } catch (InvalidIdException iie) {
+            throw new CantAddLineException();
         }
-
-        /* The following logic will load the NEW SLOT with a new lineitem 
-         object
-         */
-        //add new line item,  but remember reference is from 0.
-        //  (i.e. the first position = 0 as reference, and so on.
-        lineItemsTemp[x] = new LineItem(quantity, dbStrategy.getProductById(productId));
-
-        // set original array = new temp
-        lineItems = lineItemsTemp;
 
     }
 

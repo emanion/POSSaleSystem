@@ -33,30 +33,36 @@ public class FakeDB implements DbStrategy {
 
         // instantiate and initialize the product DB 
         products = new Product[5];
+        int productIndex = 0;
 
         DiscountStrategy qtyDiscountOne = new FlatPctDiscount();
         Product productOne = new Product(3578, "Jeans           ", 45.67, qtyDiscountOne);
-        products[0] = productOne;
+        products[productIndex] = productOne;
+        productIndex++;
 
         DiscountStrategy qtyDiscountTwo = new FlatPctDiscount();
         Product productTwo = new Product(3762, "White Dress Shirt", 30.35, qtyDiscountTwo);
-        products[1] = productTwo;
+        products[productIndex] = productTwo;
+        productIndex++;
 
         DiscountStrategy qtyDiscountThree = new QuantityDiscount();
         Product productThree = new Product(2827, "Dress socks     ", 12.87, qtyDiscountThree);
-        products[2] = productThree;
+        products[productIndex] = productThree;
+        productIndex++;
 
         DiscountStrategy qtyDiscountFour = new QuantityDiscount();
         try {
             Product productFour = new Product(4487, "T Shirt Pack    ", 39.58, qtyDiscountFour);
-            products[3] = productFour;
+            products[productIndex] = productFour;
+            productIndex++;
         } catch (InvalidIdException iie){
             System.out.println("Can't set up product: " + iie.getMessage());
         }
         
         DiscountStrategy qtyDiscountFive = new QuantityDiscount();
         Product productFive = new Product(9313, "Wisconsin Shirt ", 97.53, qtyDiscountFive);
-        products[4] = productFive;
+        products[productIndex] = productFive;
+        productIndex++;
 
     }
     public CustomerStrategy getCustomerById(int CustomerId) {
@@ -73,10 +79,19 @@ public class FakeDB implements DbStrategy {
     public Product getProductById(int ProductId) {
         Product product = new Product();
 
+        String foundResult = "notfound";
         for (int x = 0; x < products.length; x++) {
+            if (products[x] == null)
+                break;
             if (ProductId == products[x].getId()) {
                 product = products[x];
+                foundResult = "found";
+                break;
             }
+        }
+        
+        if (foundResult == "notfound") {
+                throw new InvalidIdException();
         }
 
         return product;

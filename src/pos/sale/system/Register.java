@@ -29,7 +29,7 @@ public class Register {
     }
 
     public void addLineItem(int productId, int quantity) 
-        throws InvalidIdException {
+        throws InvalidIdException, CantAddLineException {
         receipt.addLineItem(dbStrategy, productId, quantity);
     }
 

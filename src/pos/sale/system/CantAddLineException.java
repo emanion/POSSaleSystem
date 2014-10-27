@@ -9,25 +9,25 @@ package pos.sale.system;
  *
  * @author emanion
  */
-public class InvalidIdException extends IllegalArgumentException {
-    
-    private static String msg = "Invalid Product ID";
+public class CantAddLineException extends IllegalArgumentException {
+    private static String msg = "Product Id not found, cant add lineItem";
 
-    public InvalidIdException() {
+    public CantAddLineException() {
         super(msg);
     }
 
-    public InvalidIdException(String s) {
+    public CantAddLineException(String s) {
         super(msg);
     }
 
-    public InvalidIdException(String message, Throwable cause) {
+    public CantAddLineException(String message, Throwable cause) {
         super(msg, cause);
     }
 
-    public InvalidIdException(Throwable cause) {
+    public CantAddLineException(Throwable cause) {
         super(cause);
     }
+    
     
     
     
