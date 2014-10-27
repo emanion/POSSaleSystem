@@ -24,7 +24,13 @@ public class Startup {
         register.startNewSale(333);
         // add new items the customer is purchasing
         // white shirt
-        register.addLineItem(3762, 2);
+        try {
+            register.addLineItem(3762, 2);
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
+        }
         //close out sale
         ReceiptOutputStrategy receiptOutputStrategy = new ReceiptOutputConsole();
         receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
@@ -42,10 +48,22 @@ public class Startup {
         register.startNewSale(111);
         // add new items the customer is purchasing
         // dress socks
-        register.addLineItem(2827, 5);
+        try {
+            register.addLineItem(2827, 5);
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
+        }
         // add new items the customer is purchasing
         // badger shirt
-        register.addLineItem(9313, 1);
+        try {
+            register.addLineItem(9313, 1);
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
+        }
         //close out sale
         receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
 
@@ -71,10 +89,22 @@ public class Startup {
         }
         // add new items the customer is purchasing
         // Dress socks 
-        register.addLineItem(2827, 7);
+        try {
+            register.addLineItem(2827, 7);
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
+        }
         // add new items the customer is purchasing
         // Dress socks 
-        register.addLineItem(3578, 1);
+        try {
+            register.addLineItem(3578, 1);
+        } catch (InvalidIdException iie){
+            System.out.println("!!error!!" +  iie.getMessage());
+        } catch (CantAddLineException cale){
+            System.out.println("!!error!!" +  cale.getMessage());
+        }
         //close out sale
         receiptOutputStrategy.outputFormattedReceipt(register.closeSale());
 
